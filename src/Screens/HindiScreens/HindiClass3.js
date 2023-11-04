@@ -78,10 +78,10 @@ const HindiClass3 = () => {
           </View>
         </View>
         <TouchableOpacity onPress={() => openPdf(item)}>
-          <Image style={[styles.iconview, { marginLeft: -50 }]} source={viewIcon} />
+          <Image style={styles.iconview} source={viewIcon} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => downloadPdfForSubject(item)}>
-          <Image style={[styles.icon, { marginRight: 60 }]} source={callIcon} />
+          <Image style={styles.icon} source={callIcon} />
         </TouchableOpacity>
       </View>
     );
@@ -100,7 +100,6 @@ const HindiClass3 = () => {
   );
 };
 
-
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
@@ -118,15 +117,16 @@ const styles = StyleSheet.create({
   },
   nameContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
-    width: 260,
+    padding: 10,
   },
   nameTxt: {
     marginLeft: 15,
     fontWeight: '600',
     color: '#222',
     marginLeft:0,
-    fontSize: 20,
+    fontSize: 18,
   },
   icon: {
     height: 35,

@@ -37,29 +37,31 @@ import PdfOpener from "./HindiScreens/PdfOpener";
 const Navigation = () => {
     const Stack = createStackNavigator();
     const [firstLaunch, setFirstLaunch] = React.useState(null);
+
     React.useEffect(() => {
         async function setData() {
             const appData = await AsyncStorage.getItem("appLaunched");
-            if (appData == null) {
+            if (appData === null) {
                 setFirstLaunch(true);
-                AsyncStorage.setItem("appLaunched", "false");
+                AsyncStorage.setItem("appLaunched", "true"); // Set it to "true" on the first launch
             } else {
                 setFirstLaunch(false);
             }
+            
         }
         setData();
     }, []);
-    return (
+     return (
         firstLaunch != null && (
             <NavigationContainer>
-                <Stack.Navigator initialRouteName="SplashScreen">
+                 <Stack.Navigator initialRouteName={firstLaunch ? "OnboardingScreen" : "SplashScreen"}>
                     <Stack.Screen
                         options={{ headerShown: false }}
                         name="OnboardingScreen"
                         component={OnboardingScreen}
                     />
                     <Stack.Screen options={{ headerShown: false, headerLeft: null, gestureEnabled: false }}
-                        name="SplashScreen" component={SplashScreen} />
+                        name="SplashScreen" component={SplashScreen} /> 
                     <Stack.Screen options={{
                         headerTitleAlign: 'center',
                         headerStyle: {
@@ -246,7 +248,5 @@ const Navigation = () => {
                 </Stack.Navigator>
             </NavigationContainer>
         )
-
-    )
-};
+              )  }
 export default Navigation;

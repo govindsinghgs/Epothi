@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StyleSheet, View, Image, Text, BackHandler, Alert } from "react-native";
+import { StyleSheet, View, Image, Text, BackHandler, Alert, Dimensions } from "react-native";
 import { FontFamily, Color } from "./src/assets/GlobalStyles";
 import { useNavigation } from "@react-navigation/native";
 
@@ -11,7 +11,7 @@ const SplashScreen = () => {
   // }, [])
 
   setTimeout(() => {
-    navigation.navigate('OnboardingScreen')
+    navigation.navigate('HomeScreen')
   }, 3000);
 
   return (
@@ -19,7 +19,9 @@ const SplashScreen = () => {
       <View>
         <View style={styles.mainBackground1} />
         <Text style={styles.heading}>
+          <Text style={{fontWeight: 'bold', fontStyle: 'italic', textAlign: 'center' }} >
           Welcome To Epoti
+          </Text>
         </Text>
       </View>
       <Image
@@ -32,17 +34,27 @@ const SplashScreen = () => {
         source={require('../Images/splash.png')}
 
       />
-      <Text style={styles.bottom}>
-        {"\t"} {"\t"}{"\t"}{"\t"}{"\t"}{"\t"}{"\t"}{"\t"}{"\t"}{"\t"}{"\t"} <Text style={{ color: 'red', textAlign: 'center' }}>SCERT</Text> {"\n"} UTTAR PRADESH
-      </Text>
-      <Text style={{ marginLeft:28,fontSize: 20,marginBottom:15,color:'black'
-          , fontWeight: "800",
-          fontFamily: 'bold',
-          fontStyle: 'italic',
-          color: 'black' }}>Developed @ Macreel Infosoft Pvt. Ltd.</Text>
+       <Text style={styles.bottom}>
+    <Text style={{ color: 'red', fontWeight: 'bold', fontStyle: 'italic', textAlign: 'center' }}>SCERT</Text>
+    {"\n"} UTTAR PRADESH
+  </Text>
+
+  <Text style={{
+    marginLeft: 28, fontSize: 20, marginBottom: 15, color: 'black',
+    fontWeight: "800",
+    fontFamily: 'bold',
+    fontStyle: 'italic',
+    textAlign: 'center', // Center-align the text horizontally
+    color: 'black'
+  }}>Developed @ Macreel Infosoft Pvt. Ltd.
+  </Text>
     </View>
   );
 };
+
+
+const { width, height } = Dimensions.get('window');
+
 
 const styles = StyleSheet.create({
   mainLayout: {
@@ -74,28 +86,27 @@ const styles = StyleSheet.create({
     marginTop: 300
   },
   heading: {
-    marginTop: 4,
-    marginLeft: 42,
-    fontSize: 40,
-    // textTransform: "uppercase",
-    fontWeight: "600",
-    //fontFamily: FontFamily.poppinsSemiBold,
-    //color: Color.colorWhite,
-    fontFamily: 'bold',
-    fontStyle: 'italic',
-    color: 'black'
-  },
-  bottom: {
-    marginBottom: 10,
-    marginLeft: 42,
-    marginTop: 550,
-    fontSize: 40,
-    fontWeight: "600",
+    marginTop: height * 0.04, // Adjust based on your preference
+    marginLeft: width * 0.1, // Adjust based on your preference
+    fontSize: width * 0.1, // Adjust based on your preference
+    fontWeight: '600',
     color: 'black',
     fontFamily: 'bold',
     fontStyle: 'italic',
-
+  },
+  bottom: {
+    marginBottom: height * 0.1, // Adjust based on your preference
+     marginLeft: width * 0.0, // Adjust based on your preference
+    marginTop: height * 0.74, // Adjust based on your preference
+    fontSize: width * 0.1, // Adjust based on your preference
+    fontWeight: '600',
+    color: 'black',
+    fontFamily: 'bold',
+    fontStyle: 'italic',
+    textAlign: 'center', // Center-align the text horizontally
   }
+  
+
 });
 
 export default SplashScreen;
