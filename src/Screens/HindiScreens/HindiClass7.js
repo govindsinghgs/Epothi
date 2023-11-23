@@ -69,12 +69,13 @@ const HindiClass7 = () => {
     const subjecticon = require("../HindiScreens/hindi.png");
     const callIcon = require("../HindiScreens/download.png");
     const viewIcon = require("../HindiScreens/view.png");
+    const formattedSubject = item.Subject.split(' ').join('\n');
     return (
       <View style={styles.row}>
         <Image source={subjecticon} style={styles.pic} />
         <View>
           <View style={styles.nameContainer}>
-            <Text style={styles.nameTxt}>{item.Subject}</Text>
+            <Text style={styles.nameTxt}>{formattedSubject}</Text>
           </View>
         </View>
         <TouchableOpacity onPress={() => openPdf(item)}>
